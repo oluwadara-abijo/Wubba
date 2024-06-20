@@ -5,7 +5,7 @@ abstracting the complexities of network communication and data handling
 
 # Features
 * Retrofit Integration: Utilizes Retrofit for network requests, simplifying the process of 
-    defining API endpoints and handling responses.
+defining API endpoints and handling responses.
 
 * Kotlin Coroutines: Employs Kotlin Coroutines for asynchronous network operations, ensuring 
 efficient and non-blocking execution.
@@ -20,8 +20,9 @@ connection issues, and API-specific errors.
 
   The network module is organized into the following components:
 * API Interface: Defines the endpoints for the API using Retrofit annotations.
-* Network Client: Handles the creation and configuration of the Retrofit instance.
+* Core network module: Handles the creation and configuration of the Retrofit instance and provides
+its instance using Hilt.
 * Repository: Provides an abstraction layer for accessing network data, encapsulating the logic 
-  for making API requests and handling responses.
+for making API requests and handling responses.
 * Data models: Defines the data classes that represent the structure of the data received 
-  from the server.
+from the server.

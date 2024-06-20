@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -11,6 +14,16 @@ android {
     }
 
     compileSdk = 34
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
 }
 
 dependencies {
@@ -19,4 +32,8 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.coroutines)
     implementation(libs.okhttp.logging.interceptor)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+
 }
