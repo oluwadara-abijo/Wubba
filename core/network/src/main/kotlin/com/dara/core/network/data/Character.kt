@@ -1,4 +1,4 @@
-package com.dara.network.data
+package com.dara.core.network.data
 
 import kotlinx.serialization.Serializable
 
