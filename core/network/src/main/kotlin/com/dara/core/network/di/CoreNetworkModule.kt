@@ -22,13 +22,18 @@ internal object CoreNetworkModule {
 
     @Provides
     @Singleton
-    fun provideHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+    fun provideHttpClient(): OkHttpClient {
         val builder = OkHttpClient.Builder()
             .connectTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
 
-        builder.addInterceptor(loggingInterceptor)
+        builder.addInterceptor(HttpLoggingInterceptor()
+            .apply {
+                if (BuildConfig.DEBUG) {
+                    setLevel(HttpLoggingInterceptor.Level.BODY)
+                }
+            })
 
         if (BuildConfig.DEBUG) {
             val interceptor = HttpLoggingInterceptor().apply {
@@ -66,5 +71,5 @@ internal object CoreNetworkModule {
 
 }
 
-private const val BASE_URL = "https://rickandmortyapi.com/api"
+private const val BASE_URL = "https://rickandmortyapi.com/api/"
 private const val NETWORK_TIMEOUT = 30L

@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class CharactersApiModel(
     val info: InfoApiModel,
-    @SerialName("characters") val result: List<CharacterApiModel>
+    @SerialName("results") val characters: List<CharacterApiModel>
 )
