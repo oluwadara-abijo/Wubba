@@ -17,13 +17,19 @@ import com.dara.wubba.ui.theme.Dimens.PaddingDefault
 import com.dara.wubba.ui.theme.Dimens.TextSizeTitle
 
 @Composable
-fun CharacterListScreen() {
-    CharacterListScreenContent(viewModel = hiltViewModel())
+fun CharacterListScreen(
+    openCharacterDetail: () -> Unit
+) {
+    CharacterListScreenContent(
+        viewModel = hiltViewModel(),
+        openCharacterDetail = openCharacterDetail
+    )
 }
 
 @Composable
 private fun CharacterListScreenContent(
-    viewModel: CharactersViewModel
+    viewModel: CharactersViewModel,
+    openCharacterDetail: () -> Unit
 ) {
 
     val state by viewModel.uiState
@@ -40,7 +46,10 @@ private fun CharacterListScreenContent(
             contentPadding = PaddingValues(top = PaddingDefault)
         ) {
             items(state.characters) { item ->
-                CharacterCard(character = item)
+                CharacterCard(
+                    character = item,
+                    openCharacterDetail = openCharacterDetail
+                )
             }
 
         }

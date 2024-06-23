@@ -5,8 +5,10 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.dara.wubba.ui.composables.CharacterDetailScreen
 import com.dara.wubba.ui.composables.CharacterListScreen
-import kotlinx.serialization.Serializable
+import com.dara.wubba.ui.navigation.Screen.CharacterDetail
+import com.dara.wubba.ui.navigation.Screen.CharacterList
 
 
 /**
@@ -23,12 +25,22 @@ fun MainNavHost(
     NavHost(
         navController = navController,
         modifier = modifier,
-        startDestination = CharacterList.toString()
+        startDestination = CharacterList.route
     ) {
-        composable(CharacterList.toString()) { CharacterListScreen() }
+        composable(CharacterList.route) {
+            CharacterListScreen(
+                openCharacterDetail = {
+                    navController.navigate(route = CharacterDetail.route)
+                })
+        }
+        composable(CharacterDetail.route) {
+            CharacterDetailScreen()
+        }
     }
 }
 
-// Navigation routes
-@Serializable
-object CharacterList
+//Navigation routes
+sealed class Screen(val route: String) {
+    data object CharacterList : Screen("character_list")
+    data object CharacterDetail : Screen("character_detail")
+}

@@ -28,7 +28,8 @@ import com.dara.wubba.ui.theme.GreyText
 
 @Composable
 fun CharacterCard(
-    character: Character
+    character: Character,
+    openCharacterDetail: () -> Unit
 ) {
     Card(
         colors = CardDefaults.cardColors(containerColor = White),
@@ -38,7 +39,7 @@ fun CharacterCard(
                 bottom = PaddingLarge,
                 end = PaddingDefault
             ),
-        onClick = {}
+        onClick = { openCharacterDetail() }
     ) {
         AsyncImage(
             modifier = Modifier.fillMaxWidth(),
