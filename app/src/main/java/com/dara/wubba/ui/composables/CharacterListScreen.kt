@@ -17,7 +17,7 @@ import com.dara.wubba.ui.theme.Dimens.PaddingDefault
 import com.dara.wubba.ui.theme.Dimens.TextSizeTitle
 
 @Composable
-fun CharacterListScreen(modifier: Modifier = Modifier) {
+fun CharacterListScreen() {
     CharacterListScreenContent(viewModel = hiltViewModel())
 }
 

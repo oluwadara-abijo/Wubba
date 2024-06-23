@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.dara.wubba.ui.composables.CharacterListScreen
+import com.dara.wubba.ui.composables.MainApp
 import com.dara.wubba.ui.theme.WubbaTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,11 +22,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            WubbaTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    CharacterListScreen(modifier = Modifier.padding(innerPadding))
-                }
-            }
+            MainApp()
         }
     }
 }
