@@ -12,13 +12,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.dara.core.network.data.Character
 import com.dara.wubba.ui.CharactersViewModel
 import com.dara.wubba.ui.theme.Dimens.PaddingDefault
 import com.dara.wubba.ui.theme.Dimens.TextSizeTitle
 
 @Composable
 fun CharacterListScreen(
-    openCharacterDetail: () -> Unit
+    openCharacterDetail: (Character) -> Unit
 ) {
     CharacterListScreenContent(
         viewModel = hiltViewModel(),
@@ -29,7 +30,7 @@ fun CharacterListScreen(
 @Composable
 private fun CharacterListScreenContent(
     viewModel: CharactersViewModel,
-    openCharacterDetail: () -> Unit
+    openCharacterDetail: (Character) -> Unit
 ) {
 
     val state by viewModel.uiState

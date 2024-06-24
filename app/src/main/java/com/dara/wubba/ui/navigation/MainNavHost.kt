@@ -2,9 +2,11 @@ package com.dara.wubba.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.dara.wubba.ui.SharedViewModel
 import com.dara.wubba.ui.composables.CharacterDetailScreen
 import com.dara.wubba.ui.composables.CharacterListScreen
 import com.dara.wubba.ui.navigation.Screen.CharacterDetail
@@ -22,6 +24,8 @@ fun MainNavHost(
     modifier: Modifier,
 ) {
 
+    val sharedViewModel = hiltViewModel<SharedViewModel>()
+
     NavHost(
         navController = navController,
         modifier = modifier,
@@ -29,12 +33,15 @@ fun MainNavHost(
     ) {
         composable(CharacterList.route) {
             CharacterListScreen(
-                openCharacterDetail = {
+                openCharacterDetail = { character ->
+                    sharedViewModel.selectCharacter(character)
                     navController.navigate(route = CharacterDetail.route)
                 })
         }
-        composable(CharacterDetail.route) {
-            CharacterDetailScreen()
+        composable(
+            route = CharacterDetail.route,
+        ) {
+            CharacterDetailScreen(sharedViewModel)
         }
     }
 }
