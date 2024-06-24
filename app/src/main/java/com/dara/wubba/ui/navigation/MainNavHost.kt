@@ -41,7 +41,10 @@ fun MainNavHost(
         composable(
             route = CharacterDetail.route,
         ) {
-            CharacterDetailScreen(sharedViewModel)
+            CharacterDetailScreen(
+                viewModel = sharedViewModel,
+                navigateBack = { navController.navigateUp() }
+            )
         }
     }
 }

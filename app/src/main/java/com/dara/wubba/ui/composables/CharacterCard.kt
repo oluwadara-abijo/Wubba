@@ -65,7 +65,7 @@ fun CharacterCard(
             )
         ) {
             Text(
-                text = stringResource(R.string.status),
+                text = stringResource(R.string.status_title),
                 fontSize = TextSizeDefault,
                 color = GreyText,
             )
