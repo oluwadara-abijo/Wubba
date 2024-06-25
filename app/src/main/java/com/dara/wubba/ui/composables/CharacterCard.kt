@@ -1,6 +1,7 @@
 package com.dara.wubba.ui.composables
 
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -42,7 +43,7 @@ fun CharacterCard(
         onClick = { openCharacterDetail(character) }
     ) {
         AsyncImage(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().fillMaxHeight(0.7f),
             model = character.image,
             contentDescription = character.name,
             contentScale = ContentScale.FillWidth

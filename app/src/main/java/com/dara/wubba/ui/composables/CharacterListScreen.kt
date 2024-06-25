@@ -2,6 +2,7 @@ package com.dara.wubba.ui.composables
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -15,6 +16,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -61,6 +63,13 @@ private fun CharacterListScreenContent(
                 text = "Characters",
                 fontWeight = Bold,
                 fontSize = TextSizeTitle
+            )
+
+            Spacer(modifier = Modifier.padding(PaddingDefault))
+
+            ProgressBar(
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                loading = state.isLoading
             )
 
             LazyVerticalGrid(
