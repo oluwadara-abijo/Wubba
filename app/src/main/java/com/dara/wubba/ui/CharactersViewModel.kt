@@ -3,11 +3,11 @@ package com.dara.wubba.ui
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.dara.core.network.CharactersRepository
 import com.dara.core.network.data.Character
 import com.dara.core.network.utils.ErrorHandler
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -15,6 +15,7 @@ import javax.inject.Inject
 class CharactersViewModel @Inject constructor(
     private val repository: CharactersRepository,
     private val errorHandler: ErrorHandler,
+    private val coroutineScope: CoroutineScope,
 ) : ViewModel() {
 
     private val _uiState = mutableStateOf(CharactersUiState())
@@ -26,7 +27,7 @@ class CharactersViewModel @Inject constructor(
 
     private fun getCharacters() {
         updateState(isLoading = true)
-        viewModelScope.launch {
+        coroutineScope.launch {
             val result = repository.fetchCharacters()
             result.fold(
                 onSuccess = { characters ->
@@ -50,14 +51,10 @@ class CharactersViewModel @Inject constructor(
         isLoading: Boolean? = null,
         errorMessage: String? = null
     ) {
-        if (characters != null) {
-            _uiState.value = _uiState.value.copy(characters = characters)
-        }
-        if (isLoading != null) {
-            _uiState.value = _uiState.value.copy(isLoading = isLoading)
-        }
-        if (errorMessage != null) {
-            _uiState.value = _uiState.value.copy(errorMessage = errorMessage)
-        }
+        _uiState.value = _uiState.value.copy(
+            characters = characters ?: _uiState.value.characters,
+            isLoading = isLoading ?: _uiState.value.isLoading,
+            errorMessage = errorMessage ?: _uiState.value.errorMessage
+        )
     }
 }

@@ -23,3 +23,4 @@ dependencyResolutionManagement {
 rootProject.name = "Wubba"
 include(":app")
 include(":core:network")
+include(":core:test")
