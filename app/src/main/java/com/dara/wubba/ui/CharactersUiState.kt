@@ -4,6 +4,7 @@ import com.dara.core.network.data.Character
 
 data class CharactersUiState(
     val characters: List<Character> = emptyList(),
-    val isLoading: Boolean = false
+    val isLoading: Boolean = false,
+    val errorMessage: String? = null
 )
 
