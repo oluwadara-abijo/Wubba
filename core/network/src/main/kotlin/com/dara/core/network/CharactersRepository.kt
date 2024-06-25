@@ -3,7 +3,7 @@ package com.dara.core.network
 import com.dara.core.network.data.Character
 import javax.inject.Inject
 
-class CharactersRepository @Inject internal constructor(
+class CharactersRepository @Inject constructor(
     private val charactersApi: CharactersApi
 ) {
 

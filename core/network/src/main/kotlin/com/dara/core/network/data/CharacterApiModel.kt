@@ -3,7 +3,7 @@ package com.dara.core.network.data
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal data class CharacterApiModel(
+data class CharacterApiModel(
     val id: Int,
     val name: String,
     val status: String,
