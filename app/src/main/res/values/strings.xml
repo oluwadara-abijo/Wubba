@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Wubba</string>
     <string name="status_title">"Status: "</string>
-    <string name="character_image">Character image</string>
     <string name="status">Status</string>
     <string name="species">Species</string>
     <string name="gender">Gender</string>
     <string name="origin">Origin</string>
     <string name="location">Location</string>
+    <string name="characters">Characters</string>
 </resources>

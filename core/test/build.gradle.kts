@@ -21,6 +21,11 @@ android {
         jvmTarget = "17"
     }
 
+    defaultConfig {
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        minSdk = 24
+    }
+
 }
 
 tasks.withType<Test> {
@@ -34,12 +39,9 @@ dependencies {
     testImplementation(libs.androidx.lifecycle.runtime.ktx)
     testImplementation(libs.androidx.lifecycle.viewmodel)
     testImplementation(libs.androidx.ui)
-
+    testImplementation(libs.androidx.core.testing)
     testImplementation(libs.junit.jupiter)
     testImplementation(libs.junit.jupiter.engine)
     testImplementation(libs.mockk)
     testImplementation(libs.kotlinx.coroutines.test)
-
-    testImplementation("androidx.arch.core:core-testing:2.2.0")
-
 }

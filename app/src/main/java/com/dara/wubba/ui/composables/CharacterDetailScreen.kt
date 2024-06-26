@@ -87,7 +87,7 @@ fun CharacterDetailScreenContent(
 
                 Spacer(modifier = Modifier.padding(PaddingDefault))
 
-                InfoRow(title = stringResource(id = R.string.status), value = character.status)
+                InfoRow(title = stringResource(R.string.status), value = character.status)
                 InfoRow(title = stringResource(R.string.species), value = character.species)
                 InfoRow(title = stringResource(R.string.gender), value = character.gender)
                 InfoRow(title = stringResource(R.string.origin), value = character.origin)

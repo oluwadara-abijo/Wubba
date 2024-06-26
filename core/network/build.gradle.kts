@@ -24,6 +24,10 @@ android {
         jvmTarget = "17"
     }
 
+    defaultConfig {
+        minSdk = 24
+    }
+
 }
 
 dependencies {

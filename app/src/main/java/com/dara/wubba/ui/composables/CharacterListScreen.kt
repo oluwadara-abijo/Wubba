@@ -18,9 +18,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.dara.core.network.data.Character
+import com.dara.wubba.R
 import com.dara.wubba.ui.CharactersViewModel
 import com.dara.wubba.ui.theme.Dimens.PaddingDefault
 import com.dara.wubba.ui.theme.Dimens.TextSizeTitle
@@ -60,7 +62,7 @@ private fun CharacterListScreenContent(
 
         Column(modifier = Modifier.padding(paddingValues)) {
             Text(
-                text = "Characters",
+                text = stringResource(R.string.characters),
                 fontWeight = Bold,
                 fontSize = TextSizeTitle
             )
